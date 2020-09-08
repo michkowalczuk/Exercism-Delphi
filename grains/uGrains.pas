@@ -8,10 +8,8 @@ type
   ///   given that the number on each square doubles.
   /// </summary>
   Grains = class
-    const GRAINS_64 : UInt64 = 9223372036854775808;
-    const GRAINS_TOTAL : UInt64 = 18446744073709551615;
 
-    /// <summary>
+    // <summary>
     ///   Calculates how many grains were on a given square.
     /// </summary>
     /// <param name="n">
@@ -33,22 +31,19 @@ type
 
 implementation
 uses
-  System.Math,
   System.SysUtils;
 
 class function Grains.Square(const n : Integer) : UInt64;
 begin
-  if (n > 0) and (n < 63) then
-    Result := Round(IntPower(2, n-1))
-  else if (n = 64) then
-    Result := GRAINS_64
+  if (n > 0) and (n <= 64) then
+    Result := Uint64(1) shl (n-1)
   else
     raise ERangeError.Create('ERangeError');
 end;
 
 class function Grains.Total : UInt64;
 begin
-  Result := GRAINS_TOTAL ;
+  Result := 2 * Grains.Square(64) - 1;
 end;
 
 end.
