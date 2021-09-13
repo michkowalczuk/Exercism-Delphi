@@ -1,17 +1,14 @@
 unit uMeetup;
-
 interface
 type
   /// <summary>
   ///   The part of the week
   /// </summary>
   TWeekDescriptor = (First=1, Second, Third, Fourth, Fifth, Teenth, Last);
-
   /// <summary>
   ///   The day of the week
   /// </summary>
   TWeekDay = (Monday=1, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday);
-
   /// <summary>
   ///   The class for calculating the date of meetup
   /// </summary>
@@ -45,7 +42,7 @@ uses
   System.DateUtils,
   System.SysUtils;
 
-  class function TMeetup.Meetup(
+class function TMeetup.Meetup(
   const year: Integer;
   const month: Integer;
   const weekDescriptor: TWeekDescriptor;
